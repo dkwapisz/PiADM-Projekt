@@ -32,6 +32,7 @@ class VTKVisualizer:
         renderer.AddActor(actor)
 
         render_window = vtk.vtkRenderWindow()
+        render_window.SetSize(1200, 800)
         render_window.AddRenderer(renderer)
 
         interactor = vtk.vtkRenderWindowInteractor()

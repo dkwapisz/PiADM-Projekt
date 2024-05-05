@@ -6,6 +6,7 @@ class MayaviVisualizer:
         self.mesh = mesh
 
     def visualize(self):
+        mlab.figure(size=(1200, 800))
         mlab.triangular_mesh(self.mesh.points[:, 0], self.mesh.points[:, 1], self.mesh.points[:, 2],
                              self.mesh.triangles)
         mlab.show()
