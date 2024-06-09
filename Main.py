@@ -7,9 +7,9 @@ from Utils.MeshGenerator import RandomMeshGenerator, FileMeshGenerator
 from Utils.Validation import validate_file_format
 from Visualizers.MatplotlibVisualizer import MatplotlibVisualizer
 from Visualizers.MayaviVisualizer import MayaviVisualizer
-from Visualizers.Open3DVisualizer import Open3DVisualizer
+from Visualizers.Open3DVisualizer import Open3DVisualizerBasic, Open3DVisualizerDetailed
 from Visualizers.PlotlyVisualizer import PlotlyVisualizer
-from Visualizers.VTKVisualizer import VTKVisualizer
+from Visualizers.VTKVisualizer import VTKVisualizerBasic, VTKVisualizerDetailed
 
 
 class MainGUI:
@@ -22,7 +22,8 @@ class MainGUI:
         self.label = tk.Label(self.master, text="Choose visualization library:", bg="#f0f0f0", font=("Arial", 12))
         self.label.pack(pady=10)
 
-        self.choices = ["Mayavi", "VTK", "Open3D", "Matplotlib", "Plotly"]
+        self.choices = ["Mayavi", "VTK - Basic", "VTK - Detailed", "Open3D - Basic", "Open3D - Detailed", "Matplotlib",
+                        "Plotly"]
         self.choice_var = tk.StringVar()
         self.choice_var.set("Mayavi")
 
@@ -107,10 +108,14 @@ class MainGUI:
 
         if choice == "Mayavi":
             visualizer = MayaviVisualizer(mesh)
-        elif choice == "VTK":
-            visualizer = VTKVisualizer(mesh)
-        elif choice == "Open3D":
-            visualizer = Open3DVisualizer(mesh)
+        elif choice == "VTK - Basic":
+            visualizer = VTKVisualizerBasic(mesh)
+        elif choice == "VTK - Detailed":
+            visualizer = VTKVisualizerDetailed(mesh)
+        elif choice == "Open3D - Basic":
+            visualizer = Open3DVisualizerBasic(mesh)
+        elif choice == "Open3D - Detailed":
+            visualizer = Open3DVisualizerDetailed(mesh)
         elif choice == "Matplotlib":
             visualizer = MatplotlibVisualizer(mesh)
         elif choice == "Plotly":
